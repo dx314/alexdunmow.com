@@ -37,7 +37,7 @@ func Settings(settings UserSettings) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"space-y-6\"><h1 class=\"text-3xl font-bold text-text\">Settings</h1><form hx-post=\"/api/settings\" hx-target=\"this\" hx-swap=\"outerHTML\" class=\"space-y-4\"><div><label for=\"email\" class=\"block text-sm font-medium text-text mb-1\">Email</label> <input type=\"email\" id=\"email\" name=\"email\" value=\"")
+		templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 1)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -50,37 +50,37 @@ func Settings(settings UserSettings) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" class=\"w-full px-3 py-2 bg-secondary text-text rounded-md focus:outline-none focus:ring-2 focus:ring-accent\"></div><div><label class=\"flex items-center\"><input type=\"checkbox\" name=\"notifications\"")
+		templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 2)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		if settings.NotificationsOn {
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(" checked")
+			templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 3)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(" class=\"form-checkbox h-5 w-5 text-accent\"> <span class=\"ml-2 text-text\">Enable notifications</span></label></div><div><label for=\"theme\" class=\"block text-sm font-medium text-text mb-1\">Theme</label> <select id=\"theme\" name=\"theme\" class=\"w-full px-3 py-2 bg-secondary text-text rounded-md focus:outline-none focus:ring-2 focus:ring-accent\"><option value=\"light\"")
+		templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 4)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		if settings.Theme == "light" {
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(" selected")
+			templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 5)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(">Light</option> <option value=\"dark\"")
+		templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 6)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		if settings.Theme == "dark" {
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(" selected")
+			templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 7)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(">Dark</option></select></div><button type=\"submit\" class=\"px-4 py-2 bg-accent text-primary rounded-md hover:bg-opacity-80 transition-colors duration-200\">Save Settings</button></form></div>")
+		templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 8)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

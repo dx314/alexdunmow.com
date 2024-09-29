@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "prettier": "^3.3.3",
+    "typescript": "^5.6.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.11.1",
+    "esbuild": "^0.24.0",
+    "eslint": "^9.11.1",
+    "globals": "^15.9.0",
+    "typed-htmx": "^0.3.1",
+    "typescript-eslint": "^8.7.0"
+  },
+  "scripts": {
+    "build": "esbuild index.ts --bundle --outfile=../js/bundle.js",
+    "dev": "esbuild index.ts --bundle --outfile=../js/bundle.js --watch"
+  }
+}

@@ -1,0 +1,25 @@
+/* theme.css */
+:root {
+    --color-primary: #e6e6fa;  /* Light lavender */
+    --color-secondary: #ccccff;  /* Periwinkle */
+    --color-accent: #9370db;  /* Medium purple */
+    --color-background: #f8f8ff;  /* Ghost white */
+    --color-text: #333333;  /* Dark gray */
+}
+
+body.dark {
+    --color-primary: #1a1a1a;  /* Dark charcoal */
+    --color-secondary: #333333;  /* Lighter charcoal */
+    --color-accent: #ffee00;  /* Batman yellow */
+    --color-background: #0c0c0c;  /* Near black */
+    --color-text: #ffffff;  /* White */
+}
+
+body {
+    background-color: var(--color-background);
+    color: var(--color-text);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--color-accent);
+}

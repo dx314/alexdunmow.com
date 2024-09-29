@@ -6,13 +6,14 @@ import {
 import { SkillTree } from "./skillTree";
 
 import skills from "./skills.json";
+import { HexagonCanvas } from "./hexGrid";
 
 export interface AlexDunmow {
   init: () => void;
   initHTMX: () => void;
   initSidebar: () => void;
   initChatSidebar: () => void;
-  initSkillTree: () => void;
+  initSkillTree: (canvasElement: HTMLCanvasElement) => void;
   get<T = HTMLDivElement>(id: string): T;
 }
 window.alexdunmow = {
@@ -84,9 +85,10 @@ window.alexdunmow = {
       }
     });
   },
-  initSkillTree: function () {
-    console.log(skills);
-    new SkillTree("skillTreeCanvas", skills);
+  initSkillTree: function (canvasElement: HTMLCanvasElement) {
+    const hexCanvas = new HexagonCanvas(canvasElement);
+    // If you need to access the canvas dimensions:
+    console.log(`Canvas dimensions: ${hexCanvas.width}x${hexCanvas.height}`);
   },
 };
 

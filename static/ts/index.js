@@ -1,10 +1,6 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const skillTree_1 = require("./skillTree");
-const skills_json_1 = __importDefault(require("./skills.json"));
+const hexGrid_1 = require("./hexGrid");
 window.alexdunmow = {
     get: function (id) {
         const el = document.getElementById(id);
@@ -56,9 +52,10 @@ window.alexdunmow = {
             }
         });
     },
-    initSkillTree: function () {
-        console.log(skills_json_1.default);
-        new skillTree_1.SkillTree("skillTreeCanvas", skills_json_1.default);
+    initSkillTree: function (canvasElement) {
+        const hexCanvas = new hexGrid_1.HexagonCanvas(canvasElement);
+        // If you need to access the canvas dimensions:
+        console.log(`Canvas dimensions: ${hexCanvas.width}x${hexCanvas.height}`);
     },
 };
 window.alexdunmow.initHTMX();

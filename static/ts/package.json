@@ -5,6 +5,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.11.1",
+    "concurrently": "^9.0.1",
     "esbuild": "^0.24.0",
     "eslint": "^9.11.1",
     "globals": "^15.9.0",
@@ -13,6 +14,8 @@
   },
   "scripts": {
     "build": "esbuild index.ts --bundle --outfile=../js/bundle.js",
-    "dev": "esbuild index.ts --bundle --outfile=../js/bundle.js --watch"
+    "dev": "npx tsc --watch --resolveJsonModule",
+    "watch": "esbuild index.ts --bundle --outfile=../js/bundle.js --watch",
+    "start": "concurrently \"npm run dev\" \"npm run watch\""
   }
 }

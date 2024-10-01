@@ -13,7 +13,7 @@ func SkillTree() g.Node {
 			ID("skillTreeCanvas"),
 			Class("w-full h-full"),
 		),
-		Script(g.Text(`
+		Script(g.Raw(`
             window.addEventListener('DOMContentLoaded', function() {
                 alexdunmow.initSkillTree(document.getElementById('skillTreeCanvas'));
             });

@@ -5,7 +5,6 @@ import {
 } from "./htmx_types";
 import { SkillTree } from "./skillTree";
 
-import skills from "./skills.json";
 import { HexagonCanvas } from "./hexGrid";
 
 export interface AlexDunmow {
@@ -28,28 +27,19 @@ window.alexdunmow = {
     document.body.addEventListener(
       "htmx:beforeSwap",
       (event: HTMXBeforeSwapEvent) => {
-        if (event.detail.target.id === "main-content") {
-          const newActiveLink =
-            event.detail.pathInfo.finalResponsePath.substring(1) || "home";
-          window.htmx.ajax(
-            "GET",
-            `/api/sidebar?activeLink=${newActiveLink}`,
-            "#sidebar-container",
-          );
-        }
-      },
-    );
+        const path = event.detail.pathInfo.finalRequestPath;
+        const links = document.getElementsByClassName("active-link");
 
-    document.body.addEventListener(
-      "htmx:afterSettle",
-      (event: HTMXAfterSettleEvent) => {
-        if (event.detail.target.id === "main-content") {
-          const newActiveLink = window.location.pathname.substring(1) || "home";
-          window.htmx.ajax(
-            "GET",
-            `/api/sidebar?activeLink=${newActiveLink}`,
-            "#sidebar-container",
-          );
+        if (links) {
+          Array.from(links).forEach((link) => {
+            link.classList.remove("active-link");
+          });
+        }
+        const activeLink = document.querySelector(
+          `a.sidebar-link[href="${path}"]`,
+        );
+        if (activeLink) {
+          activeLink.classList.add("active-link");
         }
       },
     );

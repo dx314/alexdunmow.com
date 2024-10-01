@@ -64,7 +64,7 @@ func ChatSidebar() g.Node {
 			),
 		),
 		// Script (JavaScript can be embedded as plain text)
-		Script(g.Text(`
+		Script(g.Raw(`
             // window.alexdunmow.initChatSidebar();
         `)),
 	)

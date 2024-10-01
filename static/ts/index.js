@@ -11,15 +11,16 @@ window.alexdunmow = {
     },
     initHTMX: function () {
         document.body.addEventListener("htmx:beforeSwap", (event) => {
-            if (event.detail.target.id === "main-content") {
-                const newActiveLink = event.detail.pathInfo.finalResponsePath.substring(1) || "home";
-                window.htmx.ajax("GET", `/api/sidebar?activeLink=${newActiveLink}`, "#sidebar-container");
+            const path = event.detail.pathInfo.finalRequestPath;
+            const links = document.getElementsByClassName("active-link");
+            if (links) {
+                Array.from(links).forEach((link) => {
+                    link.classList.remove("active-link");
+                });
             }
-        });
-        document.body.addEventListener("htmx:afterSettle", (event) => {
-            if (event.detail.target.id === "main-content") {
-                const newActiveLink = window.location.pathname.substring(1) || "home";
-                window.htmx.ajax("GET", `/api/sidebar?activeLink=${newActiveLink}`, "#sidebar-container");
+            const activeLink = document.querySelector(`a.sidebar-link[href="${path}"]`);
+            if (activeLink) {
+                activeLink.classList.add("active-link");
             }
         });
     },

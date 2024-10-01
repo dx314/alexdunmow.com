@@ -22,7 +22,6 @@ func main() {
 	mux.HandleFunc("GET /dashboard", ghttp.Adapt(dashboardHandler))
 	mux.HandleFunc("GET /settings", ghttp.Adapt(settingsHandler))
 	mux.HandleFunc("GET /skills", ghttp.Adapt(skillsHandler))
-	mux.HandleFunc("GET /api/sidebar", ghttp.Adapt(sidebarHandler))
 	mux.HandleFunc("GET /", ghttp.Adapt(func(w http.ResponseWriter, r *http.Request) (g.Node, error) {
 		if r.URL.Path != "/" {
 			http.NotFound(w, r)
@@ -64,18 +63,6 @@ func dashboardHandler(w http.ResponseWriter, r *http.Request) (g.Node, error) {
 	} else {
 		return layout.DashboardPage(data), nil
 	}
-}
-
-func sidebarHandler(w http.ResponseWriter, r *http.Request) (g.Node, error) {
-	if r.Header.Get("HX-Request") != "true" {
-		http.Redirect(w, r, "/", http.StatusFound)
-		return nil, nil
-	}
-	activeLink := r.URL.Query().Get("activeLink")
-	if activeLink == "" {
-		activeLink = "home"
-	}
-	return components.Sidebar(activeLink), nil
 }
 
 func skillsHandler(w http.ResponseWriter, r *http.Request) (g.Node, error) {

@@ -16,15 +16,14 @@ func Sidebar(activeLink string) g.Node {
 		),
 		Nav(
 			Class("flex-grow"),
-			Div(ID("debug-active-link"), g.Text("Current active link: "+activeLink)),
 			Ul(
 				Class("space-y-2"),
 				Li(
 					A(
 						Href("/"),
 						Class(conditionalClass(
-							"block py-2 px-4 rounded transition-colors duration-200",
-							"bg-secondary", activeLink == "home" || activeLink == "",
+							"sidebar-link block py-2 px-4 rounded transition-colors duration-200",
+							"active-link", activeLink == "home" || activeLink == "",
 							"hover:bg-secondary", activeLink != "home" && activeLink != "",
 						)),
 						Data("hx-get", "/"),
@@ -38,9 +37,9 @@ func Sidebar(activeLink string) g.Node {
 					A(
 						Href("/dashboard"),
 						Class(conditionalClass(
-							"block py-2 px-4 rounded transition-colors duration-200",
-							"bg-secondary", activeLink == "dashboard",
-							"hover:bg-secondary", activeLink != "dashboard",
+							"sidebar-link block py-2 px-4 rounded transition-colors duration-200",
+							"active-link", activeLink == "dashboard" || activeLink == "",
+							"hover:bg-secondary", activeLink != "dashboard" && activeLink != "",
 						)),
 						Data("hx-get", "/dashboard"),
 						Data("hx-push-url", "true"),
@@ -53,8 +52,8 @@ func Sidebar(activeLink string) g.Node {
 					A(
 						Href("/skills"),
 						Class(conditionalClass(
-							"block py-2 px-4 rounded transition-colors duration-200",
-							"bg-secondary", activeLink == "skills",
+							"sidebar-link block py-2 px-4 rounded transition-colors duration-200",
+							"active-link", activeLink == "skills",
 							"hover:bg-secondary", activeLink != "skills",
 						)),
 						Data("hx-get", "/skills"),
@@ -68,8 +67,8 @@ func Sidebar(activeLink string) g.Node {
 					A(
 						Href("/settings"),
 						Class(conditionalClass(
-							"block py-2 px-4 rounded transition-colors duration-200",
-							"bg-secondary", activeLink == "settings",
+							"sidebar-link block py-2 px-4 rounded transition-colors duration-200",
+							"active-link", activeLink == "settings",
 							"hover:bg-secondary", activeLink != "settings",
 						)),
 						Data("hx-get", "/settings"),
@@ -96,10 +95,15 @@ func Sidebar(activeLink string) g.Node {
 			Class("mt-4 py-2 px-4 bg-accent text-primary rounded hover:bg-opacity-80 transition-colors duration-200"),
 			g.Text("Toggle Theme"),
 		),
-		Script(g.Text(`
-            window.addEventListener('DOMContentLoaded',function() {
-                window.alexdunmow.initSidebar();
-            });
+		Script(g.Raw(`
+			if (document.readyState === "complete") {
+				window.alexdunmow.initSidebar();
+			} else {
+				window.addEventListener('DOMContentLoaded',function() {
+					console.log("side bar init");
+					window.alexdunmow.initSidebar();
+				});
+			}
         `)),
 	)
 }

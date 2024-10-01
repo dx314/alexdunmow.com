@@ -15,6 +15,10 @@ body.dark {
     --color-text: #ffffff;  /* White */
 }
 
+.active-link {
+    background-color: var(--color-secondary);
+}
+
 body {
     background-color: var(--color-background);
     color: var(--color-text);

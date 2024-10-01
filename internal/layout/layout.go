@@ -8,7 +8,7 @@ import (
 
 // Layout template, which serves as the layout for other pages.
 func Layout(title string, activeLink string, children ...g.Node) g.Node {
-	return HTML(
+	return Doctype(HTML(
 		Lang("en"),
 		Class("h-full"),
 		Head(
@@ -17,15 +17,13 @@ func Layout(title string, activeLink string, children ...g.Node) g.Node {
 			Script(Src("https://unpkg.com/htmx.org@1.9.11")),
 			Link(Rel("stylesheet"), Href("/static/css/output.css")),
 			Link(Rel("stylesheet"), Href("/static/css/theme.css")),
-			Title(g.Text(title)),
+			Title(title),
 		),
 		Body(
 			Class("flex h-full bg-background text-text dark"),
 			Data("hx-boost", "true"),
 			Div(
 				ID("sidebar-container"),
-				Data("hx-get", "/api/sidebar?activeLink="+activeLink),
-				Data("hx-trigger", "load"),
 				components.Sidebar(activeLink),
 			),
 			components.ChatSidebar(),
@@ -35,12 +33,12 @@ func Layout(title string, activeLink string, children ...g.Node) g.Node {
 				Main(
 					ID("main-content"),
 					Class("flex-grow p-6"),
-					g.Group(children...), // Render all child nodes
+					g.Group(children), // Use g.Group to wrap children nodes correctly
 				),
 			),
 			Script(Src("/static/js/bundle.js")),
 		),
-	)
+	))
 }
 
 // HomePage template

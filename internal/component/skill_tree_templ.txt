@@ -1,1 +1,0 @@
-<div class=\"w-full h-full\"><canvas id=\"skillTreeCanvas\" class=\"w-full h-full\"></canvas><script>\n            window.addEventListener('DOMContentLoaded',function() {\n                alexdunmow.initSkillTree(document.getElementById('skillTreeCanvas'));\n            });\n        </script></div>

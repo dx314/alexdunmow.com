@@ -1,5 +1,0 @@
-<header class=\"p-6 flex flex-col justify-between bg-primary text-text\"><img src=\"/static/svg/logo.svg\" class=\"h-20 w-20\" alt=\"Logo\"></header>
-<div class=\"bg-secondary rounded-lg p-4 shadow-md\"><h1 class=\"text-lg font-bold mb-2\">
-</h1><p class=\"text-sm text-text\">
-</p></div>
-<div class=\"space-y-6\"><h1 class=\"text-3xl font-bold text-text\">Welcome to Your App</h1><p class=\"text-text\">This is the home page of your application.</p></div>
